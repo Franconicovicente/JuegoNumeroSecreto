@@ -53,9 +53,9 @@ function verificarIntento() {
   }
 
   if (numeroUsuario < numeroSecreto) {
-    mostrarPista("Muy bajo, ¡subí!", "frio");
+    mostrarPista("¡Muy bajo, subí!", "error");
   } else if (numeroUsuario > numeroSecreto) {
-    mostrarPista("Muy alto, ¡bajá!", "caliente");
+    mostrarPista("¡Muy alto, bajá!", "error");
   } else {
     mostrarPista(
       `¡Adivinaste el número en ${intentos} ${
@@ -116,13 +116,11 @@ function mostrarPista(mensaje, tipo) {
   const pista = document.getElementById("pista");
 
   // Limpiamos clases anteriores
-  pista.classList.remove("pista--frio", "pista--caliente", "pista--acierto");
+  pista.classList.remove("pista--error", "pista--acierto");
 
   // Seteamos nueva clase según tipo
-  if (tipo === "frio") {
-    pista.classList.add("pista--frio");
-  } else if (tipo === "caliente") {
-    pista.classList.add("pista--caliente");
+  if (tipo === "error") {
+    pista.classList.add("pista--error");
   } else if (tipo === "acierto") {
     pista.classList.add("pista--acierto");
   }

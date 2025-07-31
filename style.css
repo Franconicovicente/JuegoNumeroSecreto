@@ -127,6 +127,7 @@ button:hover{
     font-weight: 700;
     border: none;
     margin-top: 2rem;
+    
 }
 
 
@@ -178,6 +179,7 @@ button {
 .texto__parrafo {
     font-size: 1.5rem;
     font-weight: 400;
+    font-weight: bold;
 }
 
 .pista {
@@ -186,15 +188,13 @@ button {
     font-weight: bold;
 }
 
-.pista--frio {
-    color: #38bdf8; /* Azul celeste: frío */
-}
-
-.pista--caliente {
-    color: #ef4444; /* Rojo: caliente */
+.pista--error {
+    color: #f13c3c;
+    font-weight: bold;
 }
 
 .pista--acierto {
     color: #22c55e; /* Verde: correcto */
+    font-weight: bold;
 }
 
