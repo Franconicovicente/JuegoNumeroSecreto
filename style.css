@@ -1,3 +1,61 @@
+/* color letras */
+@media (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+
+  .container {
+    flex-direction: column;
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .container__informaciones {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .container__contenido {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .container__input {
+    height: 3.5rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+
+  .container__boton {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+  }
+
+  .container__botones {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .container__imagen-persona {
+    width: 60%;
+    margin: 1rem auto;
+    display: block;
+    position: static;
+  }
+
+  .texto__parrafo, .pista {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,6 +63,7 @@
     color: rgb(255, 255, 255);
 }
 
+/* fondo */
 body {
     background: linear-gradient(#1354A5 0%, #041832 33.33%, #041832 66.67%, #01080E 100%);
     height: 100vh;
@@ -13,65 +72,72 @@ body {
     justify-content: center;
 }
 
-/* 
-body::before {
-    background-image: url("img/code.png");
-    background-repeat: no-repeat;
-    background-position: right;
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.4;
-} */
+button:hover{
+    cursor:pointer;
+}
+
+.container__imagen-persona {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 .container {
-    width: 1200px;
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 24px;
-    border: 1px solid #1354A5;
-    box-shadow: 4px 4px 20px 0px rgba(162, 0, 255, 0.15);
-    background-image: url("img/Ruido.png");
-    background-size: 100% 100%;
-    position: relative;
+  width: 90%;
+  max-width: 60rem; /* o lo que quieras para PC */
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5rem;
+  border: 0.063rem solid #1354A5;
+  box-shadow: 4px 4px 20px 0px rgba(162, 0, 255, 0.15);
+  background-image: url("img/Ruido.png");
+  background-size: cover;
+  gap: 2rem;
+  padding: 2rem;
+  position: relative;
 }
 
 
 .container__contenido {
-    display: flex;
-    align-items: center;
-    /* position: absolute; */
-    /* bottom: 0; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: static; /* Esto arregla el desborde */
+  width: 100%;
 }
 
 .container__informaciones {
     flex: 1;
     padding: 3rem;
+    width: 34rem;
 }
 
 /* boton intentar */
 .container__boton {
-    border-radius: 16px;
-    background: #2563eb;
-    padding: 16px 24px;
+    border-radius: 1rem;
+    background: #1253dfff;
+    padding: 1rem 1.5rem;
     width: 100%;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
     border: none;
     margin-top: 2rem;
 }
+
 
 /* boton nuevo juego */
 .container__boton:disabled {
     background: #6b7280;
 }
 
+
 .container__texto {
-    margin: 32px 3px 32px 0;
+    margin: 2rem 0 2rem 0;
 }
 
 .container__texto-azul {
@@ -79,15 +145,16 @@ body::before {
 }
 
 
+/* caja con numero */
 .container__input {
     width: 100%;
-    height: 72px;
-    border-radius: 16px;
-    background-color: #504444;
+    height: 6.25rem;
+    border-radius: 1rem;
+    background-color: #ffffff;
     border: none;
-    color: #ffffff;
+    color: #000000;
     padding: 2rem;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
 }
@@ -99,7 +166,7 @@ body::before {
 
 h1 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 67px;
+    font-size: 4.188rem;
     padding-bottom: 3rem;
 }
 
@@ -109,12 +176,12 @@ button {
 }
 
 .texto__parrafo {
-    font-size: 32px;
+    font-size: 1.5rem;
     font-weight: 400;
 }
 
 .pista {
-    font-size: 24px;
+    font-size: 1.5rem;
     margin-top: 1rem;
     font-weight: bold;
 }
@@ -130,3 +197,4 @@ button {
 .pista--acierto {
     color: #22c55e; /* Verde: correcto */
 }
+

@@ -2,6 +2,7 @@ let numeroSecreto = 0;
 let intentos = 0;
 let listaNumeros = [];
 let numeroMaximo = 10;
+let limiteJuego = 25;
 
 function asignarTextoElemento(elemento, texto) {
   let elementoHTML = document.querySelector(elemento);
@@ -23,6 +24,26 @@ function crearNumeroAleatorio() {
   }
 }
 
+function aplicarHover(idElemento, colorHover, colorOriginal) {
+  const elem = document.getElementById(idElemento);
+
+  if (!elem) {
+    console.warn(`Elemento con id "${idElemento}" no encontrado.`);
+    return;
+  }
+
+  elem.addEventListener("mouseenter", () => {
+    elem.style.backgroundColor = colorHover;
+  });
+
+  elem.addEventListener("mouseleave", () => {
+    elem.style.backgroundColor = colorOriginal;
+  });
+}
+
+aplicarHover("reiniciar", "#9ca2afff", "#6b7280");
+aplicarHover("intentar", "#3671f1ff", "#1253dfff");
+
 function verificarIntento() {
   let numeroUsuario = parseInt(document.getElementById("valorUsuario").value);
   if (numeroUsuario === "" || isNaN(numeroUsuario)) {
@@ -32,12 +53,24 @@ function verificarIntento() {
   }
 
   if (numeroUsuario < numeroSecreto) {
-    mostrarPista("Muy bajo... ¡subí!", "frio");
+    mostrarPista("Muy bajo, ¡subí!", "frio");
   } else if (numeroUsuario > numeroSecreto) {
-    mostrarPista("Muy alto... ¡bajá!", "caliente");
+    mostrarPista("Muy alto, ¡bajá!", "caliente");
   } else {
-    mostrarPista("¡Adivinaste el número!", "acierto");
+    mostrarPista(
+      `¡Adivinaste el número en ${intentos} ${
+        intentos == 1 ? "intento" : "intentos"
+      }! `,
+      "acierto"
+    );
     document.getElementById("reiniciar").removeAttribute("disabled");
+    aplicarHover("reiniciar", "#3671f1ff", "#1253dfff");
+
+    const contenedorInput = document.querySelector(".container__input");
+    const contenedorIntentar = document.querySelector(".container__boton");
+
+    contenedorInput.style.display = "none";
+    contenedorIntentar.style.display = "none";
   }
   intentos++;
   limpiarCaja();
@@ -57,12 +90,26 @@ condicionesIniciales();
 
 function reiniciarJuego() {
   limpiarCaja();
+  aplicarHover("reiniciar", "#9ca2afff", "#6b7280");
+  numeroMaximo += 5;
+  const textArea = document.getElementById("valorUsuario");
+  textArea.setAttribute("max", numeroMaximo);
+
+  if (numeroMaximo == limiteJuego) {
+    asignarTextoElemento("p", "Fin del juego");
+    numeroMaximo = 5;
+    return;
+  }
+
   condicionesIniciales();
   document.querySelector("#reiniciar").setAttribute("disabled", "true");
   const pista = document.getElementById("pista");
+  const contenedorInput = document.querySelector(".container__input");
+  const contenedorIntentar = document.querySelector(".container__boton");
+  contenedorInput.style.display = "block";
+  contenedorIntentar.style.display = "block";
   pista.classList.remove("pista--mayor", "pista--menor", "pista--acierto");
-  pista.style.color = ""; // para asegurarte que no haya estilos inline persistentes
-  // si querés limpiar el texto también
+  pista.style.color = "";
 }
 
 function mostrarPista(mensaje, tipo) {
