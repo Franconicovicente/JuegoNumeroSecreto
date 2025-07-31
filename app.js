@@ -98,6 +98,7 @@ function reiniciarJuego() {
   if (numeroMaximo == limiteJuego) {
     asignarTextoElemento("p", "Fin del juego");
     numeroMaximo = 5;
+    aplicarHover("reiniciar", "#3671f1ff", "#1253dfff");
     return;
   }
 
