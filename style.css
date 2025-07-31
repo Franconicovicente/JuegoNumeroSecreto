@@ -198,3 +198,15 @@ button {
     font-weight: bold;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #1354A5; /* o el color de fondo que estés usando */
+  border: none;
+  overflow-x: hidden;
+}
+
